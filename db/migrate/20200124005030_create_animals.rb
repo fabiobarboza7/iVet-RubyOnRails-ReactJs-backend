@@ -4,6 +4,7 @@ class CreateAnimals < ActiveRecord::Migration[6.0]
       t.string :name
       t.datetime :birthday
       t.references :animal_type, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
       t.string :location
       t.string :details
       t.string :photo

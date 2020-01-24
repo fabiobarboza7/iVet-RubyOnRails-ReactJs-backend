@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_01_24_005228) do
   end
 
   create_table "animal_types", force: :cascade do |t|
-    t.string "type"
+    t.string "animal_kind"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_01_24_005228) do
     t.string "name"
     t.datetime "birthday"
     t.bigint "animal_type_id", null: false
+    t.bigint "user_id", null: false
     t.string "location"
     t.string "details"
     t.string "photo"
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_01_24_005228) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["animal_type_id"], name: "index_animals_on_animal_type_id"
+    t.index ["user_id"], name: "index_animals_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -63,4 +65,5 @@ ActiveRecord::Schema.define(version: 2020_01_24_005228) do
   add_foreign_key "adopts", "animals"
   add_foreign_key "adopts", "users"
   add_foreign_key "animals", "animal_types"
+  add_foreign_key "animals", "users"
 end
